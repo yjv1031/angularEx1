@@ -1,1 +1,9 @@
 <p>first works!</p>
+<p>{{reservationVO.carNm}}</p>
+<button (click)="callCarList()">버튼버튼</button><br>
+<input [(ngModel)]="reservationVO.carCd">
+<ul>
+    <li *ngFor="let car of carList">
+        <button (click)="carNo(car)">{{car.carcdTx}}</button>
+    </li>
+</ul>
