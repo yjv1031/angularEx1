@@ -1,5 +1,5 @@
 {
-    "/data/*": {
+    "/hp/*": {
         "target": "http://t.lotterentacar.net",
         "secure": false,
         "logLevel": "debug",

@@ -14,26 +14,7 @@ export class FirstComponent implements OnInit {
     carNm: '소나타'
   };
 
-  carList = [{
-        "atchFileMbId": "",
-        "modDt": "",
-        "loginId": "",
-        "incml": "",
-        "regNm": "",
-        "arrBranchCd": null,
-        "schEmail2": "",
-        "equnr": "",
-        "pageSize": 0,
-        "pageUnit": 0,
-        "schEmail1": "",
-        "modId": "",
-        "fuelcdTx": "",
-        "jsFunction": null,
-        "carNo": "",
-        "joindt": "",
-        "viewCnt": "",
-        "carcdTx": "",
-    }
+  carList = [
   ];
 
   constructor() { }
@@ -48,7 +29,7 @@ export class FirstComponent implements OnInit {
   callCarList() {
     axios({
       method: 'post',
-      url: 'http://t.lotterentacar.net/hp/kor/funcCommon/usedCarTheme1Info.json',
+      url: '/hp/kor/funcCommon/usedCarTheme1Info.json',
       data: {}
     }).then(
       (res) => {
