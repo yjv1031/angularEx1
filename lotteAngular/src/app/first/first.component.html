@@ -1,12 +1,19 @@
 <p>first works!</p>
 <p>{{reservationVO.carNm}}</p>
-<button (click)="callCarList()">버튼버튼</button><br>
+<button (click)="callNoticeList()">버튼버튼</button><br>
 <input [(ngModel)]="reservationVO.carCd">
 <ul>
-    <li *ngFor="let car of carList">
-        <button (click)="updateNotice(car)">{{car.content}}</button>
-        <input [(ngModel)]="car.title">
-        <input [(ngModel)]="car.content">
-        <input [(ngModel)]="car.writer">
+    <li>
+        <button (click)="insertNotice()">공지 사항 생성</button>
+        <input [(ngModel)]="emptyNotice.title">
+        <input [(ngModel)]="emptyNotice.content">
+        <input [(ngModel)]="emptyNotice.writer">
+    </li>
+    <li *ngFor="let notice of noticeList">
+        <button (click)="updateNotice(notice)">{{notice.seq}}번 공지</button>
+        <input [(ngModel)]="notice.title">
+        <input [(ngModel)]="notice.content">
+        <input [(ngModel)]="notice.writer">
+        <button (click)="deleteNotice(notice)">공지 삭제</button>
     </li>
 </ul>
