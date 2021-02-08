@@ -15,6 +15,10 @@ export class FirstComponent implements OnInit {
   };
 
   carList = [
+    {
+      title: '소나타111'
+      ,content: 'asdff'      
+    }
   ];
 
   constructor() { }
@@ -23,18 +27,34 @@ export class FirstComponent implements OnInit {
   }
 
   carNo(car) {
-    alert(car.carNo);
+    alert(car.title);
+    car.title += 'zzzz';
   }
 
   callCarList() {
+    this.reservationVO.carNm = '111';
     axios({
-      method: 'post',
-      url: '/hp/kor/funcCommon/usedCarTheme1Info.json',
+      method: 'get',
+      url: '/lot/notice/list',
       data: {}
     }).then(
       (res) => {
         console.log(JSON.stringify(res, null, 2));
-        this.carList = res.data.resultList;
+        this.carList = res.data.resultData;
+      }
+    );
+  }
+
+  updateNotice(car) {
+    console.log(JSON.stringify(car, null, 2));
+    axios({
+      method: 'put',
+      url: '/lot/notice',
+      data: car
+    }).then(
+      (res) => {
+        console.log(JSON.stringify(res, null, 2));
+        this.carList = res.data.resultData;
       }
     );
   }
