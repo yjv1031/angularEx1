@@ -7,13 +7,7 @@ import axios from 'axios';
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit {
-
-  reservationVO = {
-    carCd: 'sm01',
-    upCarCd: 'sm011',
-    carNm: '소나타'
-  };
-
+  
   noticeList = [
   ];
 

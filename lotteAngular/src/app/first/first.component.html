@@ -1,20 +1,64 @@
-<p>first works!</p>
-<p>{{reservationVO.carNm}}</p>
+
+<table class="noticeInsertTable">
+    <tr>
+        <td>
+            제목
+        </td>
+        <td>
+            내용
+        </td>
+        <td>
+            작성자
+        </td>
+        <td>
+            생성 버튼
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input [(ngModel)]="emptyNotice.title">
+        </td>
+        <td>
+            <input [(ngModel)]="emptyNotice.content">
+        </td>
+        <td>
+            <input [(ngModel)]="emptyNotice.writer">
+        </td>
+        <td>
+            <button (click)="insertNotice()">공지 사항 생성</button>
+        </td>
+    </tr>
+</table>
+<br>
 <button (click)="callNoticeList()">목록조회</button><br>
-<input [(ngModel)]="reservationVO.carCd">
-<ul>
-    <li>
-        <button (click)="insertNotice()">공지 사항 생성</button>
-        <input [(ngModel)]="emptyNotice.title">
-        <input [(ngModel)]="emptyNotice.content">
-        <input [(ngModel)]="emptyNotice.writer">
-    </li>
-    <li *ngFor="let notice of noticeList">
-        <button>{{notice.seq}}번 공지</button>
-        <input [(ngModel)]="notice.title">
-        <input [(ngModel)]="notice.content">
-        <input [(ngModel)]="notice.writer">
-        <button (click)="updateNotice(notice)">공지 업데이트</button>
-        <button (click)="deleteNotice(notice)">공지 삭제</button>
-    </li>
-</ul>
+<br>
+<table class="noticeTable">
+    <tr>
+        <td>
+            번호
+        </td>
+        <td>
+            제목
+        </td>
+        <td>
+            내용
+        </td>
+        <td>
+            작성자
+        </td>
+        <td>
+            수정
+        </td>
+        <td>
+            삭제
+        </td>
+    </tr>
+    <tr *ngFor="let notice of noticeList">
+        <td>{{notice.seq}}</td>
+        <td><input [(ngModel)]="notice.title"></td>
+        <td><input [(ngModel)]="notice.content"></td>
+        <td><input [(ngModel)]="notice.writer"></td>
+        <td><button (click)="updateNotice(notice)">공지 업데이트</button></td>
+        <td><button (click)="deleteNotice(notice)">공지 삭제</button></td>
+    </tr>
+</table>

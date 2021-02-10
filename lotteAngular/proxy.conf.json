@@ -1,6 +1,6 @@
 {
     "/lot/*": {
-        "target": "http://127.0.0.1:8090",
+        "target": "http://rentsvn.cafe24.com",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true

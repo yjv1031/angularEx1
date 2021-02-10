@@ -26,9 +26,11 @@
     <li [ngbNavItem]="3">
       <a ngbNavLink>신차장 다이렉트</a>
       <ng-template ngbNavContent>
+          <app-third></app-third>
       </ng-template>
     </li>
   </ul>
+  <br>
 
   <div [ngbNavOutlet]="nav" class="mt-2"></div>
 

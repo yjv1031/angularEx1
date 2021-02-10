@@ -1,0 +1,8 @@
+.noticeTable td{
+    border: 1px solid black;
+    width: 200px;
+}
+
+.noticeInsertTable td{
+    border: 1px solid black;
+}
