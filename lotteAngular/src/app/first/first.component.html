@@ -10,10 +10,11 @@
         <input [(ngModel)]="emptyNotice.writer">
     </li>
     <li *ngFor="let notice of noticeList">
-        <button (click)="updateNotice(notice)">{{notice.seq}}번 공지</button>
+        <button>{{notice.seq}}번 공지</button>
         <input [(ngModel)]="notice.title">
         <input [(ngModel)]="notice.content">
         <input [(ngModel)]="notice.writer">
+        <button (click)="updateNotice(notice)">공지 업데이트</button>
         <button (click)="deleteNotice(notice)">공지 삭제</button>
     </li>
 </ul>
