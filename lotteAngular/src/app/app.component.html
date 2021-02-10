@@ -6,7 +6,29 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<a href='/first-component'>first step</a><br>
-<a href='/second-component'>second step</a>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>공지사항</a>
+      <ng-template ngbNavContent>
+        <app-first></app-first>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>카라이프</a>
+      <ng-template ngbNavContent>
+        <app-second></app-second>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <a ngbNavLink>중고차</a>
+      <ng-template ngbNavContent>
+      </ng-template>
+    </li>
+  </ul>
 
-<router-outlet></router-outlet>
+  <!--
+      <router-outlet></router-outlet>
+  -->
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  
+  <pre>Active: {{ active }}</pre>
