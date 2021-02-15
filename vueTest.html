@@ -1,0 +1,131 @@
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        td{
+            border: 1px solid black;
+            width: 50px;
+        }
+    </style>
+    <body>
+        <div id="noti">
+            {{hello}}
+            <br>
+            <table>
+                <tr>
+                    <td>새로운 글</td>
+                    <td><input v-model="emptyNotice.writer"></td>
+                    <td><input v-model="emptyNotice.title"></td>
+                    <td><input v-model="emptyNotice.content"></td>
+                    <td><button v-on:click="insertNotice">등록하기</button></td>
+                    <td></td>
+                </tr>
+                <tr v-for="(notice, index) in noticeList">
+                    <td>{{notice.seq}}</td>
+                    <td><input v-model="notice.writer"></td>
+                    <td><input v-model="notice.title"></td>
+                    <td><input v-model="notice.content"></td>
+                    <td><button v-on:click="updateNotice(index)">수정</button></td>
+                    <td><button v-on:click="deleteNotice(index)">삭제</button></td>
+                </tr>
+            </table>
+
+        </div>
+    </body>
+    <script>
+    
+    const noticeVue = new Vue({
+        el:"#noti",
+        data: {
+            hello : "Hello 공지사항!",
+            emptyNotice : {
+                writer: '',
+                title: '',
+                content: '',
+            },
+            noticeList : [
+
+            ],
+        },
+        methods: {
+            insertNotice() {
+                insertNoticeAjax();
+            },
+            updateNotice(index) {
+                updateNoticeAjax(index);
+            },
+            deleteNotice(index) {
+                deleteNoticeAjax(index);
+            }
+        }
+    });
+
+    //최초 리스트 로딩
+    axios({
+        url: 'http://127.0.0.1:8090/lot/notice/list',
+        method: 'get',
+        data: {
+        }
+    }).then(
+        function(res) {
+            console.log(JSON.stringify(res, null, 2));
+            noticeVue.noticeList = res.data.resultData;
+        }
+    );
+
+    //공지사항 입력
+    function insertNoticeAjax() {
+        axios({
+            url: 'http://127.0.0.1:8090/lot/notice',
+            method: 'post',
+            data: noticeVue.emptyNotice
+        }).then(
+            function(res) {
+                console.log(JSON.stringify(res, null, 2));
+                if(res.data.resultCode > 0) {
+                    alert('정상적으로 입력되었습니다');
+                } else {
+                    alert('서버 문제로 실패하였습니다.');
+                }
+                noticeVue.noticeList = res.data.resultData;
+            }
+        );
+    }
+    //공지사항 수정
+    function updateNoticeAjax(index) {
+        axios({
+            url: 'http://127.0.0.1:8090/lot/notice',
+            method: 'put',
+            data: noticeVue.noticeList[index]
+        }).then(
+            function(res) {
+                console.log(JSON.stringify(res, null, 2));
+                if(res.data.resultCode > 0) {
+                    alert('정상적으로 수정되었습니다');
+                } else {
+                    alert('서버 문제로 실패하였습니다.');
+                }
+                noticeVue.noticeList = res.data.resultData;
+            }
+        );        
+    }
+    //공지사항 삭제
+    function deleteNoticeAjax(index) {
+        axios({
+            url: 'http://127.0.0.1:8090/lot/notice',
+            method: 'delete',
+            data: noticeVue.noticeList[index]
+        }).then(
+            function(res) {
+                console.log(JSON.stringify(res, null, 2));
+                if(res.data.resultCode > 0) {
+                    alert('정상적으로 삭제되었습니다');
+                } else {
+                    alert('서버 문제로 실패하였습니다.');
+                }
+                noticeVue.noticeList = res.data.resultData;
+            }
+        );
+    }
+    </script>
+</html>
