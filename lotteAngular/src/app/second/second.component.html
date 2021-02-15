@@ -1,1 +1,38 @@
-<p>second works!</p>
+<h3>카라이프 포스트</h3>
+<table border="1" style="width: 100%;">
+    <colgroup>
+        <col width="35%" />
+        <col width="*%" />
+        <col width="20%" />
+    </colgroup>
+    <thead>
+        <th>포스트 번호</th>
+        <th>포스트 제목</th>
+        <th>게시기간</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of postList">
+            <td><a href='javascript:;' (click)="getPostDetail(post)">{{post.postSeq}}</a></td>
+            <td><a href='javascript:;' (click)="getPostDetail(post)">{{post.postTitl1}}<br>{{post.postTitl2}}</a></td>
+            <td>{{post.postStDt}} ~ {{post.postEndDt}}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<div *ngIf="isContsDetail==true">
+    <h3>카라이프 컨텐츠 상세</h3>
+    <table border="1" style="width: 100%;">
+        <colgroup>
+            <col width="15%" />
+            <col width="*" />
+            <col width="15%" />
+            <col width="*" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <th>제목1</th>
+                <td colspan="3">{{postDetail.postTitl1}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
