@@ -7,12 +7,14 @@ import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ThirdComponent } from './third/third.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponent,
-    SecondComponent
+    SecondComponent,
+    ThirdComponent
   ],
   exports: [
     FirstComponent,
