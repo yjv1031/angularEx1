@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { inject } from "mobx-react";
-import App2 from './App2';
+import NoticeView from './view/NoticeView';
+import { Route, BrowserRouter } from 'react-router-dom';
 
 @inject('noticeStore')
 class App extends React.Component {
@@ -15,9 +15,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <App2></App2>
-      </div>
+      <BrowserRouter>
+        <div>
+            <Route path="/notice" component={NoticeView} />
+        </div>
+      </BrowserRouter>
     )
   }
 

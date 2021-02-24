@@ -1,21 +1,16 @@
-import './App.css';
 import React from 'react';
 import { inject, observer } from "mobx-react";
 
 @inject('noticeStore')
 @observer
-class App2 extends React.Component {
-
-  consoleApp() {
-    console.log('프랍스');
-    console.log(this.props);
-  }
+class noticeView extends React.Component {
   
   render() {
     const {  insertNoticeAjax, emptyNotice, setEmptyValue, callNoticeList, noticeList, setNoticeValue, updateNoticeAjax, deleteNoticeAjax } = this.props.noticeStore;
 
     return (
       <div>
+        <h1>공지사항</h1>
         <table>
             <tbody>
                 <tr>
@@ -45,4 +40,4 @@ class App2 extends React.Component {
   }
 }
 
-export default App2;
+export default noticeView;

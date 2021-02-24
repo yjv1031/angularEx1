@@ -7,9 +7,11 @@ import { Provider } from "mobx-react";
 import noticeStore from "./store/noticeStore";
 
 ReactDOM.render(
-    <Provider noticeStore={new noticeStore()}>
-      <App />
-    </Provider>,
+    <React.StrictMode>
+      <Provider noticeStore={new noticeStore()}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
