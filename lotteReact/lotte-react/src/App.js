@@ -2,7 +2,8 @@ import './App.css';
 import React from 'react';
 import { inject } from "mobx-react";
 import NoticeView from './view/NoticeView';
-import { Route, BrowserRouter } from 'react-router-dom';
+import HomeView from './view/HomeView';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 @inject('noticeStore')
 class App extends React.Component {
@@ -16,9 +17,12 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-            <Route path="/notice" component={NoticeView} />
-        </div>
+        <Switch>
+          <div>
+              <Route exact path="/" component={HomeView} />
+              <Route exact path="/notice" component={NoticeView} />
+          </div>
+        </Switch>
       </BrowserRouter>
     )
   }
